@@ -4,9 +4,8 @@ from dotenv import load_dotenv
 import os
 import json
 
-load_dotenv()
 
-token = os.getenv('TOKEN')
+token = os.environ['BITLY_TOKEN']
 
 
 def shorten_link(token: str, url: str) -> str:
@@ -42,6 +41,8 @@ def is_bitlink(url: str) -> bool:
         is_bitlink = True
     return is_bitlink
 if __name__ == '__main__':
+    load_dotenv()
+    token = os.environ['BITLY_TOKEN']
     user_url = input('Введите ссылку: ')
     if is_bitlink(user_url):
         try:
