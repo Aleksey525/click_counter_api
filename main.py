@@ -64,6 +64,6 @@ if __name__ == '__main__':
         else:
             print(f'Битлинк: {shorten_bitlink}')
 
-            # long_url = 'https://python-scripts.com/requests'
+
 
 
