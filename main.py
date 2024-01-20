@@ -45,19 +45,15 @@ if __name__ == '__main__':
     if is_bitlink(user_url):
         try:
             count_clicks = count_clicks(token, user_url)
-        except requests.exceptions.ConnectionError:
-            print(f'Введен некорректный адрес')
         except requests.exceptions.HTTPError:
-            print(f'Запрос завершился неудачно!')
+            print(f'Введен некорректный адрес')
         else:
             print(f'По вашей ссылке прошли {count_clicks} раз(а)')
     else:
         try:
             shorten_bitlink = shorten_link(token, user_url)
-        except requests.exceptions.ConnectionError:
-            print(f'Введен некорректный адрес')
         except requests.exceptions.HTTPError:
-            print(f'Запрос завершился неудачно')
+            print(f'Введен некорректный адрес')
         else:
             print(f'Битлинк: {shorten_bitlink}')
 
