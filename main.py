@@ -2,6 +2,8 @@ import requests
 from urllib.parse import urlsplit
 from dotenv import load_dotenv
 import os
+import argparse
+import sys
 
 
 def shorten_link(token: str, url: str) -> str:
@@ -38,17 +40,22 @@ def is_bitlink(url: str, token: str) -> bool:
 def main():
     load_dotenv()
     token = os.environ['BITLY_TOKEN']
-    user_url = input('Введите ссылку: ')
-    if is_bitlink(user_url, token):
+    sys.stderr.reconfigure(encoding='utf-8')
+    parser = argparse.ArgumentParser(
+        description='Приложение для сокращения ссылок и получения количества кликов по ним'
+    )
+    parser.add_argument('link', help='user link')
+    args = parser.parse_args()
+    if is_bitlink(args.link, token):
         try:
-            clicks = count_clicks(user_url, token)
+            clicks = count_clicks(args.link, token)
         except requests.exceptions.HTTPError:
             print(f'Введен некорректный адрес1')
         else:
             print(f'По вашей ссылке прошли {clicks} раз(а)')
     else:
         try:
-            shorten_bitlink = shorten_link(token, user_url)
+            shorten_bitlink = shorten_link(token, args.link)
         except requests.exceptions.HTTPError:
             print(f'Введен некорректный адрес')
         else:
@@ -57,7 +64,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
