@@ -3,7 +3,6 @@ from urllib.parse import urlsplit
 from dotenv import load_dotenv
 import os
 import argparse
-import sys
 
 
 def shorten_link(token: str, url: str) -> str:
@@ -40,7 +39,6 @@ def is_bitlink(url: str, token: str) -> bool:
 def main():
     load_dotenv()
     token = os.environ['BITLY_TOKEN']
-    sys.stderr.reconfigure(encoding='utf-8')
     parser = argparse.ArgumentParser(
         description='Приложение для сокращения ссылок и получения количества кликов по ним'
     )
