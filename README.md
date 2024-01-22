@@ -21,19 +21,19 @@ pip install -r requirements.txt
 ```
 * Ссылка на документацию ресурса - [dev.bitly.com](https://dev.bitly.com)
 
-### Примеры запуска приложения
+### Примеры запуска приложения в терминале
 
 * Создание сокращенной ссылки
 
   ```
-  Введите ссылку: https://python-scripts.com/requests
+  python main.py https://python-scripts.com/requests
   Битлинк: bit.ly/3O62ifV
   ```
 
 * Получение количества кликов
 
   ```
-  Введите ссылку: http://bit.ly/3O62ifV
+  python main.py http://bit.ly/3O62ifV
   По вашей ссылке прошли 7 раз(а)
   ```
 ### Цель проекта
