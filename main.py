@@ -48,7 +48,7 @@ def main():
         try:
             clicks = count_clicks(args.link, token)
         except requests.exceptions.HTTPError:
-            print(f'Введен некорректный адрес1')
+            print(f'Введен некорректный адрес')
         else:
             print(f'По вашей ссылке прошли {clicks} раз(а)')
     else:
