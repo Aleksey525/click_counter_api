@@ -44,20 +44,20 @@ def main():
     )
     parser.add_argument('link', help='user link')
     args = parser.parse_args()
-    if is_bitlink(args.link, token):
-        try:
+
+    try:
+        if is_bitlink(args.link, token):
             clicks = count_clicks(args.link, token)
-        except requests.exceptions.HTTPError:
-            print(f'Введен некорректный адрес')
-        else:
             print(f'По вашей ссылке прошли {clicks} раз(а)')
-    else:
-        try:
-            shorten_bitlink = shorten_link(token, args.link)
-        except requests.exceptions.HTTPError:
-            print(f'Введен некорректный адрес')
         else:
+            shorten_bitlink = shorten_link(token, args.link)
             print(f'Битлинк: {shorten_bitlink}')
+    except requests.exceptions.HTTPError:
+        print(f'Введен некорректный адрес')
+
+
+
+
 
 
 if __name__ == '__main__':
